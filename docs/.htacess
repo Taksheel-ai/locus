@@ -4,3 +4,10 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.html [NC, L]
+
+
+RewriteEngine On
+# Check for mime types commonly accepted by mobile devices
+RewriteCond %{HTTP_ACCEPT} "text\/vnd\.wap\.wml|application\/vnd\.wap\.xhtml\+xml" [NC]
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule ^ http://m.yourdomain.com%{REQUEST_URI} [R,L]
